@@ -6,7 +6,9 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 import java.util.List;
+
 //LOMBOK:
 @Getter
 @Setter
@@ -14,26 +16,29 @@ import java.util.List;
 //DB:
 @Entity
 public class Employee {
-    //ATTRIBUTES LIST:
     @Setter(AccessLevel.NONE)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //ATTRIBUTES LIST:
     private long id;
     private String username;
     private String firstName;
     private String lastName;
     private String email;
-    private String avatarImage;
+    @JsonIgnore
+    private String password;
+    private String avatarUrl;
     @OneToMany(mappedBy = "employee")
     @JsonIgnore
-    private List<Device> assignedDeviceslist;
+    private List<Device> assignedDevicesList;
 
-    //CONSTRUCTOR:
 
-    public Employee(String username, String firstName, String lastName, String email){
+    //CONSTRUCTORS:
+    public Employee(String username, String firstName, String lastName,String email, String password) {
         this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.password = password;
     }
 }

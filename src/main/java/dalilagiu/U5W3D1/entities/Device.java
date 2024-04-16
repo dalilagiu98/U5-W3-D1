@@ -1,7 +1,8 @@
 package dalilagiu.U5W3D1.entities;
 
-import jakarta.persistence.*;
-import lombok.AccessLevel;
+import dalilagiu.U5W3D1.entities.Employee;
+import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,9 +15,6 @@ import lombok.Setter;
 @Entity
 public class Device {
     //ATTRIBUTES LIST:
-    @Setter(AccessLevel.NONE)
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String type;
     private String status;
@@ -24,16 +22,9 @@ public class Device {
     private Employee employee;
 
     //CONSTRUCTORS:
-    public Device(String type, String status, Employee employee){
+    public Device(String type){
         this.type = type;
-        this.status = status;
-        this.employee = employee;
-    }
-
-    //when device is available:
-    public Device(String type) {
-        this.type = type;
-        this.status = "AVAILABLE";
-        this.employee = null;
+        this.status= "AVAILABLE";
+        this.employee= null;
     }
 }

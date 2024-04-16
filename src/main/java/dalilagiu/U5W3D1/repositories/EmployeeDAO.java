@@ -8,6 +8,9 @@ import java.util.Optional;
 
 @Repository
 public interface EmployeeDAO extends JpaRepository<Employee, Long> {
-    boolean existByEmail(String email);
+
+    //METHODS CUSTOM:
+    boolean existsByEmail(String email);
+
     Optional<Employee> findByEmail(String email);
 }
